@@ -5,12 +5,14 @@ if (process.env.NODE_ENV != "production") {
   }
   
 
-// import express
+// import dependancies
 const express = require('express');
 const connectToDb = require('./config/connectToDb')
+const Note = require('./models/note')  // importing note instead of Note as the filename in models folder is note.js
 
 // create express instance
 const app = express();
+app.use(express.json());
 
 // import mongoose
 connectToDb()
@@ -21,6 +23,18 @@ app.get('/', (req, res) => {
   res.send('Hello World!');
 });
 
+app.post('/notes', async (req, res) => {
+    // get the data from request body
+    const title = req.body.title;
+    const content = req.body.content;
+    // create a note with it
+    const note = await Note.create({
+        title: title,
+        content: content
+    });
+    // respond with a new note
+    res.status(201).json({note: note});
+});
 
 
 // start the server 
