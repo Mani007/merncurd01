@@ -43,6 +43,14 @@ app.get('/notes', async (req, res) => {
     res.status(200).json({notes: notes});
 })
 
+app.get('/notes/:id', async (req, res) => {
+    // get one notes
+    const id = req.params.id;  // get id from the request parameters
+    const note = await Note.findById({_id: id});
+    // respond with one note
+    res.status(200).json({yournoteis: note});
+})
+
 // start the server 
 
 const PORT = process.env.PORT ;
