@@ -46,7 +46,8 @@ app.get('/notes', async (req, res) => {
 app.get('/notes/:id', async (req, res) => {
     // get one notes
     const id = req.params.id;  // get id from the request parameters
-    const note = await Note.findById({_id: id});
+    //const note = await Note.findById({_id: id}); // this is correct
+    const note = await Note.findById(id);
     // respond with one note
     res.status(200).json({yournoteis: note});
 })
