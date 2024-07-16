@@ -7,11 +7,13 @@ if (process.env.NODE_ENV != "production") {
 
 // import express
 const express = require('express');
+const connectToDb = require('./config/connectToDb')
 
 // create express instance
 const app = express();
 
 // import mongoose
+connectToDb()
 
 // Routings 
 
