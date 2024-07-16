@@ -36,6 +36,12 @@ app.post('/notes', async (req, res) => {
     res.status(201).json({note: note});
 });
 
+app.get('/notes', async (req, res) => {
+    // get all notes
+    const notes = await Note.find({});
+    // respond with all notes
+    res.status(200).json({notes: notes});
+})
 
 // start the server 
 
