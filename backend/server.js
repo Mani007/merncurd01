@@ -1,5 +1,11 @@
-// import express
+// Load env variables 
 
+if (process.env.NODE_ENV != "production") {
+    require("dotenv").config();
+  }
+  
+
+// import express
 const express = require('express');
 
 // create express instance
@@ -17,7 +23,7 @@ app.get('/', (req, res) => {
 
 // start the server 
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT ;
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
