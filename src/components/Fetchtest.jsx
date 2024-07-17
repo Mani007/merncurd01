@@ -8,20 +8,21 @@ function Fetchtest() {
 
     const fetchnotes = async () =>{
         const result = await axios.get('http://localhost:4300/notes')
-        console.log(result)
-        //.then(res => setData(res.data))
+        //console.log(result)
+        .then(res => setData(res.data))
         //.then(()=> console.log(result))
-        //.catch(err => console.log(err))
+        .catch(err => console.log(err))
         
     }
   return (
     <div>
-      {/* {data && data.map(note => (
+        {/* if data is available and then map it  */}
+      {data && data.map(note => (
         <div key={note._id}>
           <h2>{note.title}</h2>
           <p>{note.content}</p>
         </div>
-      ))} */}
+      ))}
     </div>
   )
 }
