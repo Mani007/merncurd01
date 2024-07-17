@@ -52,6 +52,17 @@ app.get('/notes/:id', async (req, res) => {
     res.status(200).json({yournoteis: note});
 })
 
+app.put('/notes/:id', async (req, res) => {
+    // get the data from request body
+    const id = req.params.id;  // get id from the request parameters
+    const title = req.body.title;
+    const content = req.body.content;
+    // update a note with new data
+    const note = await Note.findByIdAndUpdate(id, {title: title, content: content}, {new: true});
+    // respond with updated note
+    res.status(200).json({updatednote: note});
+})
+
 // start the server 
 
 const PORT = process.env.PORT ;
