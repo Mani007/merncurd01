@@ -49,4 +49,11 @@ const deleteNoteById = async (req, res) => {
     res.status(200).json({message: 'Note deleted successfully'});
 }
 
-module.exports = {createNote, deleteNoteById, updateNotebyId,fetchNotes,fetchById}
+module.exports = {
+    createNote: createNote,
+    fetchNotes: fetchNotes,
+    fetchById: fetchById,
+    updateNotebyId: updateNotebyId,
+    deleteNoteById: deleteNoteById,
+ 
+}
