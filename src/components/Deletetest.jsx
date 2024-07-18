@@ -34,7 +34,7 @@ function Deletetest() {
         <div key={note._id}>
           <h2>{note.title}</h2>
           <p>{note.content}</p> <br />
-          <button onClick={handleDelete(note._id)}>Delete Note with ID {note._id}</button>
+          <button onClick={() => handleDelete(note._id)}>Delete Note with ID {note._id}</button>
         </div>
       ))}
             
