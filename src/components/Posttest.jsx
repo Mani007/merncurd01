@@ -6,16 +6,17 @@ function Posttest() {
     const handleSubmit = async (event) => {
         event.preventDefault();
         const res = await axios.post("http://localhost:4300/notes",{...post})
-        console.log(res);
-        // setPost({title: , content: ''});
+        //console.log(res);
+        setPost({title: '', content: ''}); // making textarea empty
     }
 
     const handleChange = (event) => {
         event.preventDefault();
         const {name, value} = event.target;
-        console.log(name, value); 
-        console.log(post); // for debugging purpose only  // remove this line when you are done debugging.  // console.log(event.target.name, event.target.value);  // remove this line when you are done debugging.  // console.log(post);  // for debugging purpose only  // remove this line when you are done debugging.  // console.log(event.target.value);  // for debugging purpose only  // remove
+        //console.log(name, value); 
+        //console.log(post); // for debugging purpose only  // remove this line when you are done debugging.  // console.log(event.target.name, event.target.value);  // remove this line when you are done debugging.  // console.log(post);  // for debugging purpose only  // remove this line when you are done debugging.  // console.log(event.target.value);  // for debugging purpose only  // remove
         setPost({...post, [name]: value });
+        //setPost({title: '', content: ''});
     }
 
   return (
