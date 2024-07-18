@@ -5,6 +5,7 @@ import React, {useState,useEffect} from 'react'
 function Deletetest() {
     const [deletest, setDeletest] = useState(null)
     const fetchData = async ()=>{
+        //e.preventDefault()
         const result = await axios.get('http://localhost:4300/notes') // special property used got get request
         .then(result => setDeletest(result.data))
         //.then(()=> console.log(result))
@@ -18,8 +19,12 @@ function Deletetest() {
     
 
     const handleDelete = async(_id) =>{
+        //e.preventDefault()
         // delete the note
         await axios.delete(`http://localhost:4300/notes/${_id}`)
+        .then(response => {
+            console.log("The note has been deleted")
+        })
         // update the state 
     }
   return (
