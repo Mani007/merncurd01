@@ -16,7 +16,7 @@ function Fetchtest() {
     }
   return (
     <div>
-        {/* if data is available and then map it  */}
+        {/* //if data is available and then map it */}
       {data && data.map(note => (
         <div key={note._id}>
           <h2>{note.title}</h2>
