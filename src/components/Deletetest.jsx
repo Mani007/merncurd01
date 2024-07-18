@@ -26,6 +26,11 @@ function Deletetest() {
             console.log("The note has been deleted")
         })
         // update the state 
+        //setDeletest({...Deletetest})
+        const newNote = [...deletest].filter((note)=>{
+            return note._id !== _id
+        })
+        setDeletest(newNote)
     }
   return (
     <>
