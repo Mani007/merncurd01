@@ -3,6 +3,7 @@ import axios from 'axios'
 function Puttest() {
 
     const [post, setPost] = useState(null)
+    const [putData, setPutData] = useState(null)
     const getdata = async ()=>{
             //e.preventDefault()
             const result = await axios.get('http://localhost:4300/notes') // special property used got get request
@@ -19,7 +20,8 @@ function Puttest() {
         event.preventDefault()
         const {name, value} = event.target
         console.log(name, value);
-        // setPost({...post, [name]: value})
+        setPutData({...putData, [name]: value})
+        console.log(putData)
     }
 
     const handleSubmit = () =>{
