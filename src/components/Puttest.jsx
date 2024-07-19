@@ -3,7 +3,7 @@ import axios from 'axios'
 function Puttest() {
 
     const [post, setPost] = useState(null)
-    const [putData, setPutData] = useState(null)
+    const [putData, setPutData] = useState({_id: null,title: '', content: '',})
     const getdata = async ()=>{
             //e.preventDefault()
             const result = await axios.get('http://localhost:4300/notes') // special property used got get request
@@ -19,13 +19,16 @@ function Puttest() {
     const handleChange = (event) => {
         event.preventDefault()
         const {name, value} = event.target
-        console.log(name, value);
+        //console.log(name, value);
         setPutData({...putData, [name]: value})
-        console.log(putData)
+        //console.log(putData)
     }
 
-    const handleSubmit = () =>{
-
+    const handleSubmit = (post) =>{
+        //e.preventDefault();
+        //console.log(post);
+        setPost(...post,{title: post.title, content: post.content, _id: post._id})
+        console.log(putData)
     }
   return (
     <>
@@ -34,16 +37,17 @@ function Puttest() {
         <div key={note._id}>
           <h2>{note.title}</h2>
           <p>{note.content}</p> <br />
-          <h1>Update form with put</h1> <br />
-    <form>
-    <label htmlFor='title'>Title</label> 
+          <form>
+    <label htmlFor='title'>Title</label> &nbsp;
     <input onChange={handleChange} type="text" placeholder="Title" value={post.title} name="title"/> <br />
-    <label htmlFor='title'>Content</label> 
+    <label htmlFor='title'>Content</label> &nbsp;
     <input type="textarea" onChange={handleChange} placeholder="Content here" value={post.content} name="content"/> &nbsp;
-    <button type="submit" value="Submit" onClick={handleSubmit}> Update Note </button>   
-    </form>  
+    {/* Make sure that you put the onClick function inside the anaonoymos function */}
+    <button type="submit" value="Submit" onClick={() => handleSubmit(post)}> Update Note {note._id} </button>   
+    </form>       
         </div>
 ))}
+     
     </div>
     
     </>
