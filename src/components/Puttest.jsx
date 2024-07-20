@@ -45,11 +45,7 @@ function Puttest() {
           <h2>{note.title}</h2>
           <p>{note.content}</p> <br />
           <button type="submit" value="Submit" onClick={() => handleUpdate(note)}> Update Note  </button> 
-        </div>
-           
-))}
- 
- {putData._id && (<form >
+          {putData._id && (<form >
      <label>Title</label> &nbsp;
     <input onChange={handleChange} type="text" placeholder="Title" value={putData.title} name="title"/> <br />
     <label htmlFor='title'>Content</label> &nbsp;
@@ -59,6 +55,11 @@ function Puttest() {
     
     </form>
  )}
+        </div>
+           
+))}
+ 
+
     
     </>
   )
