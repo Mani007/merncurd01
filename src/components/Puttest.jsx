@@ -27,29 +27,29 @@ function Puttest() {
     const handleSubmit = (post) =>{
         //e.preventDefault();
         //console.log(post);
-        setPost(...post,{title: post.title, content: post.content, _id: post._id})
-        console.log(putData)
+        //setPutData({title: post.title, content: post.content, _id: post._id})
+        console.log(post)
     }
   return (
     <>
-    <div>
+    
     {post && post.map(note => (
         <div key={note._id}>
           <h2>{note.title}</h2>
           <p>{note.content}</p> <br />
-          <form>
-    <label htmlFor='title'>Title</label> &nbsp;
-    <input onChange={handleChange} type="text" placeholder="Title" value={post.title} name="title"/> <br />
-    <label htmlFor='title'>Content</label> &nbsp;
-    <input type="textarea" onChange={handleChange} placeholder="Content here" value={post.content} name="content"/> &nbsp;
-    {/* Make sure that you put the onClick function inside the anaonoymos function */}
-    <button type="submit" value="Submit" onClick={() => handleSubmit(post)}> Update Note {note._id} </button>   
-    </form>       
-        </div>
-))}
+          
      
-    </div>
-    
+        </div>
+           
+))}
+     <form action="">
+     <label htmlFor='title'>Title</label> &nbsp;
+    <input onChange={handleChange} type="text" placeholder="Title" value={putData.title} name="title"/> <br />
+    <label htmlFor='title'>Content</label> &nbsp;
+    <input type="textarea" onChange={handleChange} placeholder="Content here" value={putData.content} name="content"/> &nbsp;
+    {/* Make sure that you put the onClick function inside the anaonoymos function */}
+    <button type="submit" value="Submit" onClick={handleSubmit(post)}> Update Note  </button>  
+    </form>
     </>
   )
 }
