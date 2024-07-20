@@ -34,7 +34,7 @@ function Puttest() {
     const handleSubmit = (_id) => {
 
         axios.put(`http://localhost:4300/notes/${putData._id}`, putData)
-       .then(res => console.log(res.data))
+       //.then(res => console.log(res.data))
     }
 
   return (
@@ -45,7 +45,11 @@ function Puttest() {
           <h2>{note.title}</h2>
           <p>{note.content}</p> <br />
           <button type="submit" value="Submit" onClick={() => handleUpdate(note)}> Update Note  </button> 
-          {putData._id && (<form >
+        </div>
+           
+))}
+ 
+ {putData._id && (<form >
      <label>Title</label> &nbsp;
     <input onChange={handleChange} type="text" placeholder="Title" value={putData.title} name="title"/> <br />
     <label htmlFor='title'>Content</label> &nbsp;
@@ -55,11 +59,6 @@ function Puttest() {
     
     </form>
  )}
-        </div>
-           
-))}
- 
-
     
     </>
   )
