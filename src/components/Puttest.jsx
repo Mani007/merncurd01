@@ -31,9 +31,9 @@ function Puttest() {
         console.log(note)   // this is perfectly working now
     }
 
-    const handleSubmit = (_id) => {
+    const handleSubmit = async(_id) => {
 
-        axios.put(`http://localhost:4300/notes/${putData._id}`, putData)
+        await axios.put(`http://localhost:4300/notes/${putData._id}`, putData)
        //.then(res => console.log(res.data))
     }
 
