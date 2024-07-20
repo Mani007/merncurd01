@@ -24,11 +24,11 @@ function Puttest() {
         //console.log(putData)
     }
 
-    const handleUpdate = (post) =>{
+    const handleUpdate = (note) =>{
         //e.preventDefault();
         //console.log(post);
-        setPutData({ _id: post._id})
-        console.log(post._id)   // this is perfectly working now
+        setPutData({title: note.title, content: note.content, _id: note._id})
+        console.log(note)   // this is perfectly working now
     }
 
     const handleSubmit = (_id) => {
@@ -44,7 +44,7 @@ function Puttest() {
         <div key={note._id}>
           <h2>{note.title}</h2>
           <p>{note.content}</p> <br />
-          <button type="submit" value="Submit" onClick={() => handleUpdate(post._id)}> Update Note  </button> 
+          <button type="submit" value="Submit" onClick={() => handleUpdate(note)}> Update Note  </button> 
         </div>
            
 ))}
