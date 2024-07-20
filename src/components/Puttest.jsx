@@ -3,7 +3,7 @@ import axios from 'axios'
 function Puttest() {
 
     const [post, setPost] = useState(null)
-    const [putData, setPutData] = useState({_id: null,title: '', content: '',})
+    const [putData, setPutData] = useState({_id: null ,title: '', content: '',})
     const getdata = async ()=>{
             //e.preventDefault()
             const result = await axios.get('http://localhost:4300/notes') // special property used got get request
@@ -24,12 +24,19 @@ function Puttest() {
         //console.log(putData)
     }
 
-    const handleSubmit = (post) =>{
+    const handleUpdate = (post) =>{
         //e.preventDefault();
         //console.log(post);
-        //setPutData({title: post.title, content: post.content, _id: post._id})
-        console.log(post)
+        setPutData({title: post.title, content: post.content, _id: post._id})
+        console.log(post._id)   // this is perfectly working now
     }
+
+    const handleSubmit = (_id) => {
+
+        axios.put(`http://localhost:4300/notes/${putData._id}`, putData)
+       .then(res => console.log(res.data))
+    }
+
   return (
     <>
     
@@ -37,19 +44,22 @@ function Puttest() {
         <div key={note._id}>
           <h2>{note.title}</h2>
           <p>{note.content}</p> <br />
-          
-     
+          <button type="submit" value="Submit" onClick={() => handleUpdate(post)}> Update Note  </button> 
         </div>
            
 ))}
-     <form action="">
-     <label htmlFor='title'>Title</label> &nbsp;
+ 
+ {putData._id && (<form >
+     <label>Title</label> &nbsp;
     <input onChange={handleChange} type="text" placeholder="Title" value={putData.title} name="title"/> <br />
     <label htmlFor='title'>Content</label> &nbsp;
     <input type="textarea" onChange={handleChange} placeholder="Content here" value={putData.content} name="content"/> &nbsp;
+    <button type="submit" value="Submit" onClick={() => handleSubmit(post)}> Submit update  </button> 
     {/* Make sure that you put the onClick function inside the anaonoymos function */}
-    <button type="submit" value="Submit" onClick={handleSubmit(post)}> Update Note  </button>  
+    
     </form>
+ )}
+    
     </>
   )
 }
