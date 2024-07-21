@@ -2,10 +2,16 @@ import { create } from 'zustand'
 import axios from 'axios'
 const noteStore = create((set) => ({
  data: null,
-createForm: {
+ createForm: {
     title: '',
     content: ''
    },
+ putdata: {
+    title: '',
+    content: '',
+    _id: null,
+ },
+ 
 
  fetchNotes: async () =>{
     const result = await axios.get('http://localhost:4300/notes')
@@ -62,6 +68,37 @@ handleDelete: async(_id) =>{
        
     })
 },
+
+handleChangeUpdate: (event) => {
+    event.preventDefault()
+    const {name, value} = event.target
+    //console.log(name, value);
+    //setPutData({...putData, [name]: value})
+    //console.log(putData)
+    set((state)=> {
+        return {
+            putdata: {
+                ...state.putdata,
+                [name]: value,
+            }
+        }
+    })
+},
+
+handleUpdateData: (note) =>{
+    //e.preventDefault();
+    //console.log(post);
+    //setPutData({title: note.title, content: note.content, _id: note._id})
+    console.log(note)   // this is perfectly working now
+    set({
+        putdata: {
+            title: note.title,
+            content: note.content,
+            _id: note._id,
+        }
+    })
+},
+
 
 
 

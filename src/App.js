@@ -11,8 +11,8 @@ function App() {
     <>
     {/* <Fetchtest/>
     <Posttest/> */}
-    <Deletetest/>
-    {/* <Puttest/> */}
+    {/* <Deletetest/> */}
+    <Puttest/>
     </>
     )
 }
