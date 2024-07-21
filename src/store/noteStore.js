@@ -44,6 +44,26 @@ handleSubmit: async (event) => {
     })
 },
 
+handleDelete: async(_id) =>{
+    //e.preventDefault()
+    // delete the note
+    await axios.delete(`http://localhost:4300/notes/${_id}`)
+    // .then(response => {
+    //     console.log("The note has been deleted")
+    // })
+    const {data} = noteStore.getState()
+    // update the state 
+    //setDeletest({...Deletetest})
+    const newNote = data.filter((note)=>{
+        return note._id !== _id
+    })
+    set({
+        data: newNote
+       
+    })
+},
+
+
 
 }))
 

@@ -9,9 +9,9 @@ import Puttest from './components/Puttest';
 function App() {
   return (
     <>
-    <Fetchtest/>
-    <Posttest/>
-    {/* <Deletetest/> */}
+    {/* <Fetchtest/>
+    <Posttest/> */}
+    <Deletetest/>
     {/* <Puttest/> */}
     </>
     )
