@@ -15,7 +15,7 @@ function Fetchtest() {
     //     .then(res => setData(res.data))
     //     //.then(()=> console.log(result))
     //     .catch(err => console.log(err))
-        
+         
     // }
   return (
     <div>
