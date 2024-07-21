@@ -85,17 +85,16 @@ handleChangeUpdate: (event) => {
     })
 },
 
-handleUpdateData: ({_id, title, content}) =>{
+handleUpdateData: (note) =>{
     //e.preventDefault();
     //console.log(post);
     //setPutData({title: note.title, content: note.content, _id: note._id})
     //console.log(note)   // this is perfectly working now
-    console.log(_id, title, content)
     set({
         putdata: {
-            title,
-            content,
-            _id,
+            title: note.title,
+            content: note.content,
+            _id: note._id,
         }
     })
 },
