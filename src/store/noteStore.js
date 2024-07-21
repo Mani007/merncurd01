@@ -99,6 +99,14 @@ handleUpdateData: (note) =>{
     })
 },
 
+handleSubmitUpdate: async(_id) => {
+    const {putdata} = noteStore.getState()
+
+       await axios.put(`http://localhost:4300/notes/${putdata._id}`, putdata)
+       console.log(putdata) // this is perfectly
+    //    //.then(res => console.log(res.data))
+     }
+
 
 
 

@@ -56,7 +56,7 @@ function Puttest() {
     <input onChange={store.handleChangeUpdate} type="text" placeholder="Title" value={store.putdata.title} name="title"/> <br />
     <label htmlFor='title'>Content</label> &nbsp;
     <input type="textarea" onChange={store.handleChangeUpdate} placeholder="Content here" value={store.putdata.content} name="content"/> &nbsp;
-    <button type="submit" value="Submit" > Submit update  </button> 
+    <button type="submit" value="Submit" onClick={() => store.handleSubmitUpdate(store.putdata._id)}> Submit update  </button> 
     {/* Make sure that you put the onClick function inside the anaonoymos function */}
     
     </form>
