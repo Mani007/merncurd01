@@ -89,12 +89,13 @@ handleUpdateData: (note) =>{
     //e.preventDefault();
     //console.log(post);
     //setPutData({title: note.title, content: note.content, _id: note._id})
-    console.log(note)   // this is perfectly working now
+    //console.log(note)   // this is perfectly working now
+    const {_id, title, content} = note
     set({
         putdata: {
-            title: note.title,
-            content: note.content,
-            _id: note._id,
+            title,
+            content,
+            _id,
         }
     })
 },
