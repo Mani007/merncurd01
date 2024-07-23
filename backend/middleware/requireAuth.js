@@ -15,6 +15,7 @@ const requireAuth = async (req,res,next) => {
     //console.log(user);
     // check the validity of the token such as email, password or the expiration time
     if (!user) return res.status(401).json({message: 'User ID is invalid'});
+    if (Date.now() > verify.exp) return  res.status(401).json({message: 'Session expired'});
     // attach user to the request object
     req.user = user; // here we are attaching the user id to every request
     // if all clear then continue to next
