@@ -36,7 +36,7 @@ app.get('/logout', logout);
 app.post('/notes', createNote);
 
 // get all notes
-app.get('/notes', requireAuth ,fetchNotes)
+app.get('/notes',fetchNotes)
 
 // test auth route
 app.get('/checkauth', requireAuth ,checkAuth)

@@ -14,7 +14,7 @@ const noteStore = create((set) => ({
  
 
  fetchNotes: async () =>{
-    const result = await axios.get('http://localhost:4300/notes')
+    const result = await axios.get('/notes')
     set({ data: result.data })
  },
 
@@ -38,7 +38,7 @@ const noteStore = create((set) => ({
 handleSubmit: async (event) => {
     event.preventDefault();
     const {createForm, data} = noteStore.getState()
-    const res = await axios.post("http://localhost:4300/notes",{...createForm})
+    const res = await axios.post("/notes",{...createForm})
     //console.log(res);
     //setPost({title: '', content: ''}); // making textarea empty
     set({
@@ -53,7 +53,7 @@ handleSubmit: async (event) => {
 handleDelete: async(_id) =>{
     //e.preventDefault()
     // delete the note
-    await axios.delete(`http://localhost:4300/notes/${_id}`)
+    await axios.delete(`/notes/${_id}`)
     // .then(response => {
     //     console.log("The note has been deleted")
     // })
@@ -102,7 +102,7 @@ handleUpdateData: (note) =>{
 handleSubmitUpdate: async(_id) => {
     const {putdata} = noteStore.getState()
 
-       await axios.put(`http://localhost:4300/notes/${putdata._id}`, putdata)
+       await axios.put(`/notes/${putdata._id}`, putdata)
        console.log(putdata) // this is perfectly
     //    //.then(res => console.log(res.data))
      }
