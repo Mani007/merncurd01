@@ -8,6 +8,7 @@ if (process.env.NODE_ENV != "production") {
 // import dependancies
 const express = require('express');
 const cors = require('cors')
+const cookieParser = require('cookie-parser')
 const connectToDb = require('./config/connectToDb')
 const Note = require('./models/note')  // importing note instead of Note as the filename in models folder is note.js
 const {createNote,fetchNotes,fetchById,updateNotebyId,deleteNoteById} = require('./controllers/noteController'); // importing all the functions from note controller
@@ -15,7 +16,8 @@ const {signup,login,logout} = require('./controllers/userController'); // import
 // create express instance
 const app = express();
 app.use(express.json());
-app.use(cors())
+app.use(cors());
+app.use(cookieParser());
 // import mongoose
 connectToDb()
 

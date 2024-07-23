@@ -1,6 +1,7 @@
 const user = require('../models/user');   // connected from the databases by model files
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken');
+const cookieParser = require('cookie-parser')
 
 if (process.env.NODE_ENV != "production") {
     require("dotenv").config();
@@ -36,8 +37,12 @@ const login = async (req, res) => {
         // if everything matches then generate and send JWT token
         const exp = Date.now() + 1000 *60 * 60 * 24 *30
         const token = jwt.sign({ sub: User._id, exp: exp }, process.env.SALT);
-        // send the token
-        res.json({ token });
+        // setup the cookie 
+        res.cookie('Authorization', token, { expires: new Date(exp), httpOnly: true, sameSite: 'lax', secure: process.env.NODE_ENV === 'production' });
+        // send the token in the cookie
+        //res.json({ token }); // never send token to the local storage prefer cookie
+        res.sendStatus(200)
+        
     } catch (err) {
         console.error(err);
         res.status(500).send('email or password did not match');
