@@ -3,9 +3,6 @@ const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser')
 
-if (process.env.NODE_ENV != "production") {
-    require("dotenv").config();
-  }
 
 const signup = async (req, res) => {
     try {
@@ -50,8 +47,14 @@ const login = async (req, res) => {
 
 }
 
+const checkAuth = async (req,res) => {
+    console.log(req.user)
+    res.sendStatus(200)
+
+}
+
 const logout = async (req, res) => {
 
 }
 
-module.exports = { signup, login, logout };  // connect this to main server.js
+module.exports = { signup, login, logout, checkAuth };  // connect this to main server.js
