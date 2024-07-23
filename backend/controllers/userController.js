@@ -56,8 +56,14 @@ const checkAuth = async (req,res) => {
 
 const logout = async (req, res) => {
     //res.clearCookie('Authorization', { path: '/' });
-    res.clearCookie('Authorization');
-    res.sendStatus(200)
+    try {
+
+        res.clearCookie('Authorization');
+        res.sendStatus(200)
+    } catch (err) {
+        console.error(err);
+        res.status(500).send('Server Error');
+    }  // clear the cookie and send the response  // remove cookie from the client side (browser)
 
 }
 
