@@ -11,6 +11,7 @@ const cors = require('cors')
 const cookieParser = require('cookie-parser')
 const connectToDb = require('./config/connectToDb')
 const Note = require('./models/note')  // importing note instead of Note as the filename in models folder is note.js
+const requireAuth = require('./middleware/requireAuth')
 const {createNote,fetchNotes,fetchById,updateNotebyId,deleteNoteById} = require('./controllers/noteController'); // importing all the functions from note controller
 const {signup,login,logout} = require('./controllers/userController'); // importing all the functions from user controller
 // create express instance
@@ -31,7 +32,7 @@ app.get('/logout', logout);
 app.post('/notes', createNote);
 
 // get all notes
-app.get('/notes', fetchNotes)
+app.get('/notes', requireAuth ,fetchNotes)
 
 // fetch or get note by id
 app.get('/notes/:id', fetchById )
