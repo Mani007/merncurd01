@@ -17,7 +17,11 @@ const {signup,login,logout, checkAuth} = require('./controllers/userController')
 // create express instance
 const app = express();
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+  origin: true,
+  credentials: true,
+ }
+));
 app.use(cookieParser());
 // import mongoose
 connectToDb()
