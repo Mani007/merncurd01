@@ -6,6 +6,7 @@ const userStore = create((set) => ({
         email: '',
         password: ''
     },
+    loggedIn: false,
 
     handleLogin: async (e) => {
         
@@ -28,11 +29,24 @@ const userStore = create((set) => ({
         try {
             const res = await axios.post('/login', loginform, {withCredentials: true});
             console.log(res);
+            set({loggedIn: true})
             // localStorage.setItem('token', res.data.token);
             // window.location.href = '/notes';
         } catch (error) {
             console.error(error);
         }
+    },
+    
+    checkAuth: async() => {
+        try {
+            const res = await axios.get('/checkauth', {withCredentials: true});
+            console.log(res);
+            set({loggedIn: true})
+        } catch (error) {
+            set({loggedIn: false})
+            console.error(error);
+        }
+
     },
 
 }))

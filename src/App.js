@@ -9,6 +9,7 @@ import NotePage from './pages/NotePage';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import LoginPage from './pages/LoginPage';
 import Signup from './pages/Signup';
+import RequireAuth from './components/RequireAuth';
 
 function App() {
   return (
@@ -26,7 +27,7 @@ function App() {
       </li>
     </ul>
     <Routes>
-      <Route index element={<NotePage/>} />
+      <Route index element={<RequireAuth> <NotePage/> </RequireAuth> } />
       <Route path='/login' element={<LoginPage/>} />
       <Route path='/signup' element={<Signup/>} />
     </Routes>
