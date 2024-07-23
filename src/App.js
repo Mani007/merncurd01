@@ -5,14 +5,12 @@ import Fetchtest from './components/Fetchtest';
 import Posttest from './components/Posttest';
 import Deletetest from './components/Deletetest';
 import Puttest from './components/Puttest';
+import NotePage from './pages/NotePage';
 
 function App() {
   return (
     <>
-    <Fetchtest/>
-    {/* <Posttest/>  */}
-     {/* <Deletetest/> */}
-    {/* <Puttest/> */}
+  <NotePage/>
     </>
     )
 }
