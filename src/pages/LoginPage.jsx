@@ -14,7 +14,7 @@ function LoginPage() {
           Password:
           <input type="password" onChange={store.handleLogin} name="password" value={store.loginform.password} />
         </label>
-        <button type="submit" value="Login" >Login</button>
+        <button type="submit" onClick={store.login} value="Login" >Login</button>
   
     </form>
     </>
