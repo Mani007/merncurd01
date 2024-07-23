@@ -54,6 +54,9 @@ const checkAuth = async (req,res) => {
 }
 
 const logout = async (req, res) => {
+    //res.clearCookie('Authorization', { path: '/' });
+    res.clearCookie('Authorization');
+    res.sendStatus(200)
 
 }
 
