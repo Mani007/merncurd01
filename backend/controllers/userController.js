@@ -32,7 +32,7 @@ const login = async (req, res) => {
         const isMatch = await bcrypt.compare(password, User.password);
         if (!isMatch) return res.status(400).json({message:'password did not match'}); 
         // if everything matches then generate and send JWT token
-        const exp = Date.now() + 5000
+        const exp = Date.now() + 1000 *60 * 60 * 24 *30   // 30 days session expiry time
         const token = jwt.sign({ sub: User._id, exp: exp }, process.env.SALT);
         // setup the cookie 
         res.cookie('Authorization', token, { expires: new Date(exp), httpOnly: true, sameSite: 'lax', secure: process.env.NODE_ENV === 'production' });
