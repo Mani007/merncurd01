@@ -12,8 +12,9 @@ const requireAuth = async (req,res,next) => {
     const verify = jwt.verify(gotToken, process.env.SALT);
     // find user using decoded sub
     const user = await User.findById(verify.sub);
+    //console.log(user);
     // check the validity of the token such as email, password or the expiration time
-    if (!user) return res.status(401).send('User ID is invalid');
+    if (!user) return res.status(401).json({message: 'User ID is invalid'});
     // attach user to the request object
     req.user = user; // here we are attaching the user id to every request
     // if all clear then continue to next

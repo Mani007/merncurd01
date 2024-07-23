@@ -27,10 +27,10 @@ const login = async (req, res) => {
         const { email, password } = req.body;
         // find user by email
         const User = await user.findOne({ email });
-        if (!User) return res.status(400).send('email not registered'); // check if email already exists
+        if (!User) return res.status(400).json({message:'email not registered'}); // check if email already exists
         // compare hashed password with the entered password
         const isMatch = await bcrypt.compare(password, User.password);
-        if (!isMatch) return res.status(400).send('password did not match'); 
+        if (!isMatch) return res.status(400).json({message:'password did not match'}); 
         // if everything matches then generate and send JWT token
         const exp = Date.now() + 1000 *60 * 60 * 24 *30
         const token = jwt.sign({ sub: User._id, exp: exp }, process.env.SALT);
@@ -48,8 +48,9 @@ const login = async (req, res) => {
 }
 
 const checkAuth = async (req,res) => {
-    console.log(req.user)
+    //console.log(req.user)
     res.sendStatus(200)
+
 
 }
 
