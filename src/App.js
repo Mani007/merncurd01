@@ -6,11 +6,19 @@ import Posttest from './components/Posttest';
 import Deletetest from './components/Deletetest';
 import Puttest from './components/Puttest';
 import NotePage from './pages/NotePage';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import LoginPage from './pages/LoginPage';
 
 function App() {
   return (
     <>
-  <NotePage/>
+    <BrowserRouter>
+    <Routes>
+      <Route index element={<NotePage/>} />
+      <Route path='/login' element={<LoginPage/>} />
+    </Routes>
+    </BrowserRouter>
+ 
     </>
     )
 }
