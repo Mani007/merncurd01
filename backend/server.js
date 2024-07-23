@@ -10,7 +10,8 @@ const express = require('express');
 const cors = require('cors')
 const connectToDb = require('./config/connectToDb')
 const Note = require('./models/note')  // importing note instead of Note as the filename in models folder is note.js
-const {createNote,fetchNotes,fetchById,updateNotebyId,deleteNoteById} = require('./controllers/noteController'); // importing all the fuctions from note controller
+const {createNote,fetchNotes,fetchById,updateNotebyId,deleteNoteById} = require('./controllers/noteController'); // importing all the functions from note controller
+const {signup,login,logout} = require('./controllers/userController'); // importing all the functions from user controller
 // create express instance
 const app = express();
 app.use(express.json());
@@ -19,6 +20,10 @@ app.use(cors())
 connectToDb()
 
 // Routings 
+app.post('/signup', signup);
+
+app.post('/login', login);
+app.get('/logout', logout);
 
 // create a new note
 app.post('/notes', createNote);
