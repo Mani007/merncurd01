@@ -23,8 +23,8 @@ const userStore = create((set) => ({
 
     },
 
-    login: async (e) => {
-        e.preventDefault();
+    login: async () => {
+        //e.preventDefault();
         const {loginform} = userStore.getState();
         try {
             const res = await axios.post('/login', loginform, {withCredentials: true});
