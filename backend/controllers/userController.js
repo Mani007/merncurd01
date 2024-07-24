@@ -8,6 +8,9 @@ const signup = async (req, res) => {
     try {
     // get email and password from req.body
     const { email, password } = req.body;
+    // check if email already exists
+    const User = await user.findOne({ email });
+    if (User) return res.status(400).json({message:'email already registered'}); // check if email already exists
     // hasing the password 
     const hashedPassword = await bcrypt.hash(password, 10);  // 10 is the number of rounds for hashing
     // create user in the database

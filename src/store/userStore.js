@@ -6,7 +6,25 @@ const userStore = create((set) => ({
         email: '',
         password: ''
     },
+    signup: {
+        email: '',
+        password: '',
+        password2: ''
+    },
     loggedIn: false,
+    handlesignup: async(e) => {
+        
+        const {name,value} = e.target;
+        set((state)=> {
+            //console.log(state.loginform) // Please note that this console.log always show one value less than the actual input
+            return {
+                signup: {
+                    ...state.signup,
+                    [name]: value,
+                }
+            }
+        })
+    },
 
     handleLogin: async (e) => {
         
@@ -21,6 +39,26 @@ const userStore = create((set) => ({
             }
         })
 
+    },
+    
+    signupcall: async () => {
+        //e.preventDefault();
+        const {signup} = userStore.getState();
+        try {
+            const res = await axios.post('/signup', signup, {withCredentials: true});
+            console.log(res);
+            set({
+                signup: {
+                    email: '',
+                    password: '',
+                    password2: ''
+                },
+            })
+            // localStorage.setItem('token', res.data.token);
+            // window.location.href = '/notes';
+        } catch (error) {
+            console.error(error);
+        }
     },
 
     login: async () => {
