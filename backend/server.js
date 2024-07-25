@@ -33,21 +33,21 @@ app.post('/login', login);
 app.get('/logout', logout);
 
 // create a new note
-app.post('/notes', createNote);
+app.post('/notes', requireAuth,createNote);
 
 // get all notes
-app.get('/notes',fetchNotes)
+app.get('/notes',requireAuth, fetchNotes)
 
 // test auth route
-app.get('/checkauth', requireAuth ,checkAuth)
+app.get('/checkauth',requireAuth,checkAuth)
 
 // fetch or get note by id
-app.get('/notes/:id', fetchById )
+app.get('/notes/:id',requireAuth, fetchById )
 
 // update a note
-app.put('/notes/:id', updateNotebyId )
+app.put('/notes/:id',requireAuth, updateNotebyId )
 
-app.delete('/notes/:id', deleteNoteById)
+app.delete('/notes/:id', requireAuth,deleteNoteById)
 
 // start the server 
 const PORT = process.env.PORT ;

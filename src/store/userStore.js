@@ -45,7 +45,7 @@ const userStore = create((set) => ({
         //e.preventDefault();
         const {signup} = userStore.getState();
         try {
-            const res = await axios.post('/signup', signup, {withCredentials: true});
+            const res = await axios.post('/signup', signup, );
             console.log(res);
             set({
                 signup: {
@@ -65,7 +65,7 @@ const userStore = create((set) => ({
         //e.preventDefault();
         const {loginform} = userStore.getState();
         try {
-            const res = await axios.post('/login', loginform, {withCredentials: true});
+            const res = await axios.post('/login', loginform, );
             console.log(res);
             set({loggedIn: true, loginform:{
                 email: '',
@@ -80,7 +80,7 @@ const userStore = create((set) => ({
     
     checkAuth: async() => {
         try {
-            const res = await axios.get('/checkauth', {withCredentials: true});
+            const res = await axios.get('/checkauth', );
             //console.log(res);
             set({loggedIn: true})
         } catch (error) {
@@ -91,7 +91,7 @@ const userStore = create((set) => ({
     },
     logout: async() => {
         try {
-            await axios.get('/logout', {withCredentials: true});
+            await axios.get('/logout', );
             set({loggedIn: false})
             console.log('Logged out')
         } catch (error) {

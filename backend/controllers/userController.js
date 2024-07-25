@@ -70,4 +70,4 @@ const logout = async (req, res) => {
 
 }
 
-module.exports = { signup, login, logout, checkAuth };  // connect this to main server.js
+module.exports = { signup, login, logout,checkAuth };  // connect this to main server.js

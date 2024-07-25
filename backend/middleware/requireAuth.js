@@ -6,8 +6,12 @@ const requireAuth = async (req,res,next) => {
     //console.log('in Auth middleware'); //- test successful
     try {
     // read token from the cookie
+    //console.log('In Auth middleware'); //- test successful
+    //console.log(req.cookies.Authorization); 
     const gotToken = req.cookies.Authorization;
-
+    // if token is not avaiable
+    if (!gotToken) return res.status(403).json({message: 'No token, authorization denied'});
+    // if token is found but expired then send 401
     // decode the token 
     const verify = jwt.verify(gotToken, process.env.SALT);
     // find user using decoded sub
